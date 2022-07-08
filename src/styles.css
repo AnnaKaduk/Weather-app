@@ -1,4 +1,101 @@
-h1 {
-  color: red;
-  text-decoration: underline;
+body {
+  background-color: #fdfdfe;
+  font-family: arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  max-height: 800px;
+  margin: 20px auto;
+  padding: 30px 30px 10px;
+  background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.search-form {
+  margin-bottom: 15px;
+}
+
+.city {
+  margin-top: 15px;
+  font-size: 45px;
+}
+
+#currentDate {
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.weather_info {
+  margin-top: 20px;
+}
+
+.weather-icon {
+  height: 80px;
+  margin-right: 5px;
+  margin-bottom: 30px;
+}
+
+.temperature {
+  font-size: 55px;
+}
+
+.units {
+  position: relative;
+  top: -25px;
+  text-decoration: none;
+}
+#celsius-link,
+#fahrenheit-link {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+  font-size: 20px;
+}
+
+.next-days-weather-info {
+  text-align: center;
+  margin: 40px auto 20px;
+}
+
+.day-1,
+.day-2,
+.day-3,
+.day-4 {
+  border: #b7dbff;
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 0;
+  margin-right: 10px;
+}
+.day-5 {
+  border: #b7dbff;
+  border-style: outset;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.next-day {
+  font-size: 25px;
+}
+
+.next-days-date,
+.next-days-weather-range {
+  font-size: 16px;
+}
+
+.next-days-emoji {
+  font-size: 28px;
+}
+
+footer {
+  text-align: right;
+  font-family: monospace;
+  margin: 20px auto;
+  padding-right: 20px;
 }

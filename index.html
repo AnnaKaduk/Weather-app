@@ -4,12 +4,133 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/598c9599bd.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/styles.css" />
-    <title>Document</title>
+    <title>Weather Forecast wireframe</title>
   </head>
   <body>
-    <h1>Hello Git ;)</h1>
+    <div class="container">
+      <header>
+        <form class="search-form">
+          <div class="row">
+            <div class="col-8">
+              <input
+                type="search"
+                placeholder="Type a city.."
+                autofocus="on"
+                autocomplete="off"
+                class="form-control shadow-sm"
+                id="cityInput"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm"
+              />
+            </div>
+            <div class="col-2" id="btnImHere">
+              <button
+                type="button"
+                class="btn btn-warning text-primary fw-bold shadow-sm"
+              >
+                I am here
+              </button>
+            </div>
+          </div>
+        </form>
 
+        <h1>
+          <div class="city" id="city">Kyiv</div>
+        </h1>
+        <h2>
+          <div class="current-date" id="currentDate">
+            Sut 13:15, 04 May 2022
+          </div>
+        </h2>
+      </header>
+
+      <section class="weather_info">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div class="clearfix">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="Cloudy icon"
+                class="weather-icon float-left"
+                id="weatherIcon"
+              />
+              <span class="float-left">
+                <span class="temperature" id="cityCurrentTemp">19</span>
+                <span class="units">
+                  <a href="#" id="celsius-link">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a></span
+                >
+              </span>
+            </div>
+          </div>
+          <div class="col-4">
+            <ul>
+              <li class="humidity">Humidity: 60%</li>
+              <li class="windSpeed">Wind: 8 km/h</li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <ul>
+              <li class="sunrise">Sunrise: 05:24</li>
+              <li class="sunset">Sunset: 22:15</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="row next-days-weather-info" id="nextDaysInfo">
+        <div class="col day-1">
+          <h5 class="next-day">Sanday</h5>
+          <div class="next-days-date">06/05</div>
+          <div class="next-days-emoji">⛅</div>
+          <div class="next-days-weather-range">10° - 25°</div>
+        </div>
+        <div class="col day-2">
+          <h5 class="next-day">Monday</h5>
+          <div class="next-days-date">06/06</div>
+          <div class="next-days-emoji">⛅</div>
+
+          <div class="next-days-weather-range">10° - 25°</div>
+        </div>
+        <div class="col day-3">
+          <h5 class="next-day">Tuesday</h5>
+          <div class="next-days-date">06/07</div>
+          <div class="next-days-emoji">🌧</div>
+          <div class="next-days-weather-range">10° - 25°</div>
+        </div>
+        <div class="col day-4">
+          <h5 class="next-day">Wednesday</h5>
+          <div class="next-days-date">06/08</div>
+          <div class="next-days-emoji">🌧</div>
+          <div class="next-days-weather-range">10° - 25°</div>
+        </div>
+        <div class="col day-5">
+          <h5 class="next-day">Thursday</h5>
+          <div class="next-days-date">06/09</div>
+          <div class="next-days-emoji">⛅</div>
+          <div class="next-days-weather-range">10° - 25°</div>
+        </div>
+      </div>
+
+      <footer>Coded by Anna Kaduk</footer>
+    </div>
     <script src="src/script.js"></script>
   </body>
 </html>
