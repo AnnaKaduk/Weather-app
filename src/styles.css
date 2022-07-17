@@ -1,12 +1,18 @@
 body {
-  background-color: #fdfdfe;
+  background: url(https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   font-family: arial, sans-serif;
 }
 
 .container {
   max-width: 900px;
   max-height: 800px;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 30px 30px 10px;
   background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
