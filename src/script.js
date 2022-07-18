@@ -5,6 +5,7 @@ function getSelectedCityInfo(response) {
   console.log(response.data.wind.speed);
   console.log(response.data.sys.sunrise);
   console.log(response.data.sys.sunset);
+  console.log(response.data.weather[0].description);
 
   let now = new Date();
   let year = now.getFullYear();
@@ -40,6 +41,9 @@ function getSelectedCityInfo(response) {
 
   let currentdate = document.querySelector("#currentDate");
   currentdate.innerHTML = `${day} ${hours}:${minutes}, ${date} ${month} ${year}`;
+
+  let description = document.querySelector("#weatherDescription");
+  description.innerHTML = response.data.weather[0].description;
 
   let temp = document.querySelector("#cityCurrentTemp");
   temp.innerHTML = Math.round(response.data.main.temp);
