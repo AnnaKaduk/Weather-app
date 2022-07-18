@@ -6,6 +6,7 @@ function getSelectedCityInfo(response) {
   console.log(response.data.sys.sunrise);
   console.log(response.data.sys.sunset);
   console.log(response.data.weather[0].description);
+  console.log(response.data.weather[0].icon);
 
   let now = new Date();
   let year = now.getFullYear();
@@ -44,6 +45,13 @@ function getSelectedCityInfo(response) {
 
   let description = document.querySelector("#weatherDescription");
   description.innerHTML = response.data.weather[0].description;
+
+  let icon = document.querySelector("#weatherIcon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 
   let temp = document.querySelector("#cityCurrentTemp");
   temp.innerHTML = Math.round(response.data.main.temp);
