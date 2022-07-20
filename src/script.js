@@ -1,13 +1,4 @@
 function getSelectedCityInfo(response) {
-  console.log(response);
-  console.log(response.data.main.temp);
-  console.log(response.data.main.humidity);
-  console.log(response.data.wind.speed);
-  console.log(response.data.sys.sunrise);
-  console.log(response.data.sys.sunset);
-  console.log(response.data.weather[0].description);
-  console.log(response.data.weather[0].icon);
-
   let now = new Date();
   let year = now.getFullYear();
   let months = [
@@ -56,6 +47,8 @@ function getSelectedCityInfo(response) {
   let temp = document.querySelector("#cityCurrentTemp");
   temp.innerHTML = Math.round(response.data.main.temp);
 
+  celsiusTemperature = response.data.main.temp;
+
   let humidity = document.querySelector(".humidity");
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
@@ -82,6 +75,23 @@ function getSelectedCityInfo(response) {
   sunset.innerHTML = `Sunset: ${timesst}`;
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitElement = document.querySelector("#cityCurrentTemp");
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  fahrenheitElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let TemperatureElement = document.querySelector("#cityCurrentTemp");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  TemperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#cityInput");
@@ -96,9 +106,6 @@ function searchCity(event) {
   axios.get(apiURL).then(getSelectedCityInfo);
 }
 
-let btnSearch = document.querySelector(".search-form");
-btnSearch.addEventListener("submit", searchCity);
-
 function showLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -111,6 +118,17 @@ function showCurrentCity(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
 }
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let btnSearch = document.querySelector(".search-form");
+btnSearch.addEventListener("submit", searchCity);
 
 let btnGeolocation = document.querySelector("#btnImHere");
 btnGeolocation.addEventListener("click", showCurrentCity);

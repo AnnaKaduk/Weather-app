@@ -58,6 +58,12 @@ body {
   top: -25px;
   text-decoration: none;
 }
+
+.weather_info .active {
+  color: black;
+  cursor: default;
+}
+
 #celsius-link,
 #fahrenheit-link {
   text-decoration: none;
