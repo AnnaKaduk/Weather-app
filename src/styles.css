@@ -14,7 +14,11 @@ body {
   max-height: 800px;
   margin: 40px auto;
   padding: 30px 30px 10px;
-  background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
+  background: radial-gradient(
+    827px at 47.3% 48%,
+    rgb(255, 255, 255) 0%,
+    rgb(138, 192, 216) 90%
+  );
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
@@ -25,18 +29,20 @@ body {
 
 .city {
   margin-top: 15px;
-  font-size: 45px;
+  font-size: 40px;
 }
 
 #currentDate {
   margin: 0 auto;
   font-size: 20px;
+  color: #77757e;
 }
 
 .weather-description {
   margin-top: 5px;
   font-size: 20px;
   text-transform: capitalize;
+  color: #77757e;
 }
 
 .weather_info {
@@ -72,6 +78,7 @@ body {
 li {
   list-style: none;
   font-size: 20px;
+  color: #77757e;
 }
 
 .next-days-weather-info {
@@ -99,16 +106,20 @@ li {
 }
 
 .next-day {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .next-days-date,
 .next-days-weather-range {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .next-days-emoji {
-  font-size: 28px;
+  font-size: 35px;
+}
+
+.next-days-min-temp {
+  color: #77757e;
 }
 
 footer {
