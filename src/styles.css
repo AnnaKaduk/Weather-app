@@ -81,28 +81,13 @@ li {
   color: #77757e;
 }
 
-.next-days-weather-info {
+.forecast {
   text-align: center;
   margin: 40px auto 20px;
-}
 
-.day-1,
-.day-2,
-.day-3,
-.day-4 {
   border: #b7dbff;
-  border-style: outset;
-  border-width: 1px;
-  border-radius: 10px;
   padding: 0;
   margin-right: 10px;
-}
-.day-5 {
-  border: #b7dbff;
-  border-style: outset;
-  border-width: 2px;
-  border-radius: 10px;
-  padding: 0;
 }
 
 .next-day {

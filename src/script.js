@@ -73,6 +73,16 @@ function getSelectedCityInfo(response) {
     minute: "2-digit",
   });
   sunset.innerHTML = `Sunset: ${timesst}`;
+
+  getForecast(response.data.coord);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates.lat);
+  let apiKey = "2efb460bce75be2c0490e210e9cf0816";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecast);
 }
 
 function displayFahrenheitTemp(event) {
@@ -117,6 +127,32 @@ function showLocation(position) {
 function showCurrentCity(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row justify-content-center">`;
+  let days = ["Sanday", "Monday", "Tueday", "Wednesday", "Thursday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+       <div class="col-2">
+          <h5 class="next-day">${day}</h5>
+          <div class="next-days-date">06/05</div>
+          <div class="next-days-emoji">⛅</div>
+          <div class="next-days-weather-range">
+            <span class="next-days-max-temp">25°</span>
+            <span class="next-days-min-temp">10°</span>
+          </div>
+       </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let celsiusTemperature = null;
