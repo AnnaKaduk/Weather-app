@@ -17,7 +17,7 @@ function getSelectedCityInfo(response) {
   ];
   let month = months[now.getMonth()];
   let date = now.getDate();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Tue", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[now.getDay()];
   let hours = now.getHours();
   if (hours < 10) {
@@ -80,7 +80,6 @@ function getSelectedCityInfo(response) {
 function getForecast(coordinates) {
   let apiKey = "2efb460bce75be2c0490e210e9cf0816";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiURL);
   axios.get(apiURL).then(displayForecast);
 }
 
@@ -128,28 +127,47 @@ function showCurrentCity(event) {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row justify-content-center">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
        <div class="col-2">
-          <h5 class="next-day">${forecastDay.dt}</h5>
-          <div class="next-days-date">06/05</div>
+          <h5 class="next-day">${formatDay(forecastDay.dt)}</h5>
           <div class="next-days-icon">
-          <img src="http://openweathermap.org/img/wn/01n@2x.png" alt="">
+          <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width = 60px
+          >
           </div>
           <div class="next-days-weather-range">
-            <span class="next-days-max-temp">25°</span>
-            <span class="next-days-min-temp">10°</span>
+            <span class="next-days-max-temp">${Math.round(
+              forecastDay.temp.max
+            )}°</span>
+            <span class="next-days-min-temp">${Math.round(
+              forecastDay.temp.min
+            )}°</span>
           </div>
        </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
