@@ -83,23 +83,6 @@ function getForecast(coordinates) {
   axios.get(apiURL).then(displayForecast);
 }
 
-function displayFahrenheitTemp(event) {
-  event.preventDefault();
-  let fahrenheitElement = document.querySelector("#cityCurrentTemp");
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-  fahrenheitElement.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  let TemperatureElement = document.querySelector("#cityCurrentTemp");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  TemperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#cityInput");
@@ -173,14 +156,6 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 let btnSearch = document.querySelector(".search-form");
 btnSearch.addEventListener("submit", searchCity);
