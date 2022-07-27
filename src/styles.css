@@ -28,10 +28,11 @@ body {
 }
 
 .city {
-  margin-top: 15px;
+  margin-top: 25px;
   font-size: 40px;
 }
 
+.update,
 #currentDate {
   margin: 0 auto;
   font-size: 20px;
